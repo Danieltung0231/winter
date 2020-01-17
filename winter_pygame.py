@@ -13,6 +13,9 @@ balloon_position_x = window_width/2
 balloon_position_y = window_height - balloon_height
 heart = 10
 
+window_color = (255, 255, 255)
+enemy_color = (255, 255, 255)
+
 enemy_position = []
 for i in range(7):
     k = []
@@ -53,7 +56,7 @@ while run:
             sys.exit()
     if life:
         # 清除畫布
-        window_surface.fill((255,255,255))
+        window_surface.fill(window_color)
         # 更新角色位置
         balloon_position_x, mouse_y = pygame.mouse.get_pos()
         balloon = Balloon(balloon_position_x - balloon_width/2, balloon_position_y)
@@ -68,7 +71,7 @@ while run:
                 pos[0] = random.randint(0, window_width)
                 heart -= 1
             pos[1] -=-3
-            pygame.draw.rect(window_surface, (255,0,0), [pos[0], pos[1], 30, 30])
+            pygame.draw.rect(window_surface, enemy_color, [pos[0], pos[1], 30, 30])
         t -=-1
         if t == FPS*2.5:
             time -=-1
