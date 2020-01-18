@@ -1,7 +1,7 @@
 import sys, time
 import random
 import pygame
-from pygame.locals import Color, QUIT
+from pygame.locals import Color, QUIT, KEYDOWN
 
 window_width = 1000
 window_height = 800
@@ -57,6 +57,9 @@ while run:
         if event.type == QUIT:
             pygame.quit()
             sys.exit("end")
+        elif event.type == KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                life = True
     if life:
         # 清除畫布
         window_surface.fill(window_color)
