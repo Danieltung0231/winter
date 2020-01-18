@@ -14,8 +14,9 @@ balloon_position_y = window_height - balloon_height
 heart = 10
 
 window_color = (255, 255, 255)
-enemy_color = (255, 255, 255)
+enemy_color = (255, 0, 0)
 
+# 紀錄敵人位置
 enemy_position = []
 for i in range(7):
     k = []
@@ -53,7 +54,7 @@ while run:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
-            sys.exit()
+            sys.exit("end")
     if life:
         # 清除畫布
         window_surface.fill(window_color)
@@ -63,15 +64,19 @@ while run:
         window_surface.blit(balloon.image, balloon.rect)
         # 更新子彈位置
         for pos in enemy_position:
-            if pos[1] > window_height-10:
-                pos[1] = random.randint(0,window_width/10)
-                pos[0] = random.randint(0, window_width)
-            if pos[1] > balloon_position_y and pos[0] > balloon_position_x - balloon_width/2 and pos[0] < balloon_position_x + balloon_width/2:
-                pos[1] = random.randint(0,window_width/10)
-                pos[0] = random.randint(0, window_width)
+            enemy_x = pos[0]
+            enemy_y = pos[1]
+            if enemy_y > window_height-10:
+                enemy_y = random.randint(0,window_width/10)
+                enemy_x = random.randint(0, window_width)
+            elif enemy_y > balloon_position_y and enemy_x > balloon_position_x - balloon_width/2 and enemy_x < balloon_position_x + balloon_width/2:
+                enemy_y = random.randint(0,window_width/10)
+                enemy_x = random.randint(0, window_width)
                 heart -= 1
-            pos[1] -=-3
-            pygame.draw.rect(window_surface, enemy_color, [pos[0], pos[1], 30, 30])
+            enemy_y -=-3
+            pygame.draw.rect(window_surface, enemy_color, [enemy_x, enemy_y, 30, 30])
+            pos[0] = enemy_x
+            pos[1] = enemy_y
         t -=-1
         if t == FPS*2.5:
             time -=-1
