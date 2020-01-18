@@ -60,6 +60,9 @@ while run:
         elif event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
                 life = True
+                heart = 10
+                time = 0
+                t = 0
     if life:
         # 清除畫布
         window_surface.fill(window_color)
