@@ -15,10 +15,11 @@ heart = 10
 
 window_color = (255, 255, 255)
 enemy_color = (255, 0, 0)
+enemy_num = 7
 
 # 紀錄敵人位置
 enemy_position = []
-for i in range(7):
+for i in range(enemy_num):
     k = []
     k.append(random.randint(0,window_width))
     k.append(random.randint(0,window_width/10))
