@@ -16,6 +16,7 @@ heart = 10
 window_color = (255, 255, 255)
 enemy_color = (255, 0, 0)
 enemy_num = 7
+enemy_speed = 3
 
 # 紀錄敵人位置
 enemy_position = []
@@ -74,7 +75,7 @@ while run:
                 enemy_y = random.randint(0,window_width/10)
                 enemy_x = random.randint(0, window_width)
                 heart -= 1
-            enemy_y -=-3
+            enemy_y += enemy_speed
             pygame.draw.rect(window_surface, enemy_color, [enemy_x, enemy_y, 30, 30])
             pos[0] = enemy_x
             pos[1] = enemy_y
