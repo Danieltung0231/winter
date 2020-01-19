@@ -59,10 +59,18 @@ while run:
             sys.exit("end")
         elif event.type == KEYDOWN:
             if event.key == pygame.K_SPACE:
-                life = True
-                heart = 10
-                time = 0
-                t = 0
+                if life == False:
+                    life = True
+                    heart = 10
+                    time = 0
+                    t = 0
+                    for pos in enemy_position:
+                        enemy_x = pos[0]
+                        enemy_y = pos[1]
+                        enemy_y = random.randint(0,window_width/10)
+                        enemy_x = random.randint(0, window_width)
+                        pos[0] = enemy_x
+                        pos[1] = enemy_y
     if life:
         # 清除畫布
         window_surface.fill(window_color)
@@ -90,11 +98,15 @@ while run:
             time -=-1
             t = 0
         heart_txt = my_font.render('Heart: {}'.format(heart), True, (0, 0, 0))# 顯示血量
-        time_txt = my_font.render('Time: {}'.format(time), True, (0, 0, 0))
-        window_surface.blit(heart_txt, (10, 0))# 渲染物件
+        time_txt = my_font.render('Time: {}'.format(time), True, (0, 0, 0))# 顯示時間
+        # 渲染物件
+        window_surface.blit(heart_txt, (10, 0))
         window_surface.blit(time_txt, (400, 0))
         if heart == 0:
             life = False
+    else :
+        restart_txt = my_font.render("按空白鍵開始", True, (0, 0, 0))
+        window_surface.blit(restart_txt, (window_width/2 - 40, window_height/2))
     
     pygame.display.update()# 畫面更新
 
