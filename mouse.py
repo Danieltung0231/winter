@@ -13,7 +13,6 @@ time = 60
 
 FPS = 60
 run = True
-game = True
 
 mouse_pos = []
 for i in range(4) :
@@ -24,7 +23,6 @@ for i in range(4) :
         k.append(random.randint(FPS, FPS*3))
         k.append(random.randint(FPS, FPS*3))
         mouse_pos.append(k)
-
 
 # start
 print("Pygame Start")
@@ -41,7 +39,7 @@ while run :
         if event.type == QUIT :
             pygame.quit()
             sys.exit("end")
-        elif event.type == MOUSEBUTTONDOWN :
+        elif event.type == MOUSEBUTTONDOWN and time != 0:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             for pos in mouse_pos :
                 if pos[2] == 0:
