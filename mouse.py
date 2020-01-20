@@ -4,6 +4,8 @@ from pygame.locals import MOUSEBUTTONDOWN, QUIT
 window_width = 800
 window_height = 500
 
+mouse_width = window_width // 4 - 20
+mouse_height = window_height // 2 - 20
 window_color = (255, 255, 255)
 
 point = 0
@@ -12,11 +14,11 @@ FPS = 60
 run = True
 
 mouse_pos = []
-for i in range(4):
-    for j in range(2):
+for i in range(4) :
+    for j in range(2) :
         k = []
-        k.append(i * window_width // 5 + 20)
-        k.append(j * window_height // 3 + 20)
+        k.append(i * mouse_width + 40)
+        k.append(j * mouse_height + 40)
         k.append(random.randint(FPS, FPS*3))
         k.append(random.randint(FPS, FPS*3))
         mouse_pos.append(k)
@@ -30,24 +32,27 @@ main_clock = pygame.time.Clock()
 my_font = pygame.font.SysFont(None, 50)
 main_clock.tick(FPS)
 
-while run:
-    for event in pygame.event.get():
-        if event.type == QUIT:
+while run :
+    window.fill(window_color)
+    for event in pygame.event.get() :
+        if event.type == QUIT :
             pygame.quit()
             sys.exit("end")
-        elif event.type == MOUSEBUTTONDOWN:
+        elif event.type == MOUSEBUTTONDOWN :
             mouse_x, mouse_y = pygame.mouse.get_pos()
-    
-    window.fill(window_color)
+            for pos in mouse_pos :
+                if mouse_x > pos[0] and mouse_x < pos[0] + mouse_width and mouse_y > pos[1] and mouse_y < pos[1] + mouse_height :
+                    pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
 
     for pos in mouse_pos:
         if pos[2] == 0:
-            pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], window_width // 5 - 20, window_height // 3 - 20])
+            pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], mouse_width, mouse_height])
             
             pos[3] -= 1
             if pos[3] == 0:
-                pos[0], pos[1] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
+                pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
         else :
             pos[2] -= 1
+    point_txt = pygame.font.SysFont(None, 50)
 
     pygame.display.update()
