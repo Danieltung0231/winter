@@ -9,7 +9,7 @@ mouse_height = window_height // 2 - 80
 window_color = (255, 255, 255)
 
 point = 0
-time = 60
+times = 60
 
 FPS = 60
 run = True
@@ -39,7 +39,7 @@ while run :
         if event.type == QUIT :
             pygame.quit()
             sys.exit("end")
-        elif event.type == MOUSEBUTTONDOWN and time != 0:
+        elif event.type == MOUSEBUTTONDOWN and times != 0:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             for pos in mouse_pos :
                 if pos[2] == 0:
@@ -47,8 +47,8 @@ while run :
                         pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
                         point-=-1
         elif event.type == KEYDOWN :
-            if time == 0 and event.key == pygame.K_SPACE:
-                time = 60
+            if times == 0 and event.key == pygame.K_SPACE:
+                times = 60
                 point = 0
     if time != 0:
         for pos in mouse_pos:
@@ -61,11 +61,11 @@ while run :
             else :
                 pos[2] -= 1
         if t == FPS * 2.5 :
-            time -= 1
+            times -= 1
             t = 0
         t-=-1
         point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
-        time_txt = my_font.render("Time:{}".format(time), True, (0, 0, 0), window_color)
+        time_txt = my_font.render("Time:{}".format(times), True, (0, 0, 0), window_color)
         window.blit(point_txt, (0, 0))
         window.blit(time_txt, (window_width // 2 - 40, 0))
     
