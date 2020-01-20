@@ -33,6 +33,7 @@ main_clock = pygame.time.Clock()
 my_font = pygame.font.SysFont(None, 50)
 main_clock.tick(FPS)
 
+t = 0
 while run :
     window.fill(window_color)
     for event in pygame.event.get() :
@@ -56,8 +57,14 @@ while run :
                 pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
         else :
             pos[2] -= 1
+    if t == FPS * 1.8 :
+        time -= 1
+        t = 0
+    t-=-1
     point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
+    time_txt = my_font.render("Time:{}".format(time), True, (0, 0, 0), window_color)
     window.bilt(point_txt, (0, 0))
+    window.bilt(time_txt, (window_width // 2 - 40, 0))
     
 
     pygame.display.update()
