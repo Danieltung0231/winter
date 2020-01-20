@@ -9,6 +9,7 @@ mouse_height = window_height // 2 - 20
 window_color = (255, 255, 255)
 
 point = 0
+time = 60
 
 FPS = 60
 run = True
@@ -41,8 +42,10 @@ while run :
         elif event.type == MOUSEBUTTONDOWN :
             mouse_x, mouse_y = pygame.mouse.get_pos()
             for pos in mouse_pos :
-                if mouse_x > pos[0] and mouse_x < pos[0] + mouse_width and mouse_y > pos[1] and mouse_y < pos[1] + mouse_height :
-                    pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
+                if pos[2] == 0:
+                    if mouse_x > pos[0] and mouse_x < pos[0] + mouse_width and mouse_y > pos[1] and mouse_y < pos[1] + mouse_height :
+                        pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
+                        point-=-1
 
     for pos in mouse_pos:
         if pos[2] == 0:
@@ -53,6 +56,8 @@ while run :
                 pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
         else :
             pos[2] -= 1
-    point_txt = pygame.font.SysFont(None, 50)
+    point_txt = my_font.render("Point:{}".format(point), True, )
+    window.bilt(point_txt, True, 
+    
 
     pygame.display.update()
