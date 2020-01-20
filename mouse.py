@@ -1,5 +1,5 @@
 import sys, time, random, pygame
-from pygame.locals import MOUSEBUTTONDOWN, QUIT 
+from pygame.locals import MOUSEBUTTONDOWN, QUIT, KEYDOWN
 
 window_width = 800
 window_height = 500
@@ -48,6 +48,9 @@ while run :
                     if mouse_x > pos[0] and mouse_x < pos[0] + mouse_width and mouse_y > pos[1] and mouse_y < pos[1] + mouse_height :
                         pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
                         point-=-1
+        elif event.type == KEYDOWN :
+            if time == 0 and event.key == pygame.K_SPACE:
+                time == 60
     if time != 0:
         for pos in mouse_pos:
             if pos[2] == 0:
