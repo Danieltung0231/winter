@@ -4,8 +4,8 @@ from pygame.locals import MOUSEBUTTONDOWN, QUIT, KEYDOWN
 window_width = 800
 window_height = 500
 
-mouse_width = window_width // 4 - 20
-mouse_height = window_height // 2 - 20
+mouse_width = window_width // 4 - 80
+mouse_height = window_height // 2 - 80
 window_color = (255, 255, 255)
 
 point = 0
@@ -18,8 +18,8 @@ mouse_pos = []
 for i in range(4) :
     for j in range(2) :
         k = []
-        k.append(i * mouse_width + 40)
-        k.append(j * mouse_height + 40)
+        k.append(i * mouse_width + 80)
+        k.append(j * mouse_height + 80)
         k.append(random.randint(FPS, FPS*3))
         k.append(random.randint(FPS, FPS*3))
         mouse_pos.append(k)
@@ -48,7 +48,8 @@ while run :
                         point-=-1
         elif event.type == KEYDOWN :
             if time == 0 and event.key == pygame.K_SPACE:
-                time == 60
+                time = 60
+                point = 0
     if time != 0:
         for pos in mouse_pos:
             if pos[2] == 0:
