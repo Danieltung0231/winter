@@ -20,8 +20,8 @@ for i in range(4) :
         k = []
         k.append(i * mouse_width + 80)
         k.append(j * mouse_height + 80)
-        k.append(random.randint(FPS, FPS*3))
-        k.append(random.randint(FPS, FPS*3))
+        k.append(random.randint(FPS*2.5, FPS*3*2.5))
+        k.append(random.randint(FPS*2.5, FPS*3*2.5))
         mouse_pos.append(k)
 
 # start
