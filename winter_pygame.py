@@ -35,7 +35,6 @@ life = True
 class Balloon(pygame.sprite.Sprite):
     def __init__(self, position_x, position_y):
         super().__init__()
-        super().kill()
         self.raw_image = pygame.image.load('balloon.png').convert_alpha()
         self.image = pygame.transform.scale(self.raw_image, (balloon_width, balloon_height))
         self.rect = self.image.get_rect()
