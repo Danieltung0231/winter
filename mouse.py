@@ -18,6 +18,7 @@ for i in range(4):
         k.append(i * window_width // 5 + 20)
         k.append(j * window_height // 3 + 20)
         k.append(random.randint(FPS, FPS*3))
+        k.append(random.randint(FPS, FPS*3))
         mouse_pos.append(k)
 
 
@@ -40,6 +41,13 @@ while run:
     window.fill(window_color)
 
     for pos in mouse_pos:
-        pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], window_width // 5 , window_height // 3])
+        if pos[2] == 0:
+            pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], window_width // 5 - 20, window_height // 3 - 20])
+            
+            pos[3] -= 1
+            if pos[3] == 0:
+                pos[0], pos[1] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
+        else :
+            pos[2] -= 1
 
     pygame.display.update()
