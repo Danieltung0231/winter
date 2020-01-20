@@ -13,6 +13,7 @@ time = 60
 
 FPS = 60
 run = True
+game = True
 
 mouse_pos = []
 for i in range(4) :
@@ -47,24 +48,24 @@ while run :
                     if mouse_x > pos[0] and mouse_x < pos[0] + mouse_width and mouse_y > pos[1] and mouse_y < pos[1] + mouse_height :
                         pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
                         point-=-1
-
-    for pos in mouse_pos:
-        if pos[2] == 0:
-            pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], mouse_width, mouse_height])
+    if time != 0:
+        for pos in mouse_pos:
+            if pos[2] == 0:
+                pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], mouse_width, mouse_height])
             
-            pos[3] -= 1
-            if pos[3] == 0:
-                pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
-        else :
-            pos[2] -= 1
-    if t == FPS * 1.8 :
-        time -= 1
-        t = 0
-    t-=-1
-    point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
-    time_txt = my_font.render("Time:{}".format(time), True, (0, 0, 0), window_color)
-    window.bilt(point_txt, (0, 0))
-    window.bilt(time_txt, (window_width // 2 - 40, 0))
+                pos[3] -= 1
+                if pos[3] == 0:
+                    pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
+            else :
+                pos[2] -= 1
+        if t == FPS * 1.8 :
+            time -= 1
+            t = 0
+        t-=-1
+        point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
+        time_txt = my_font.render("Time:{}".format(time), True, (0, 0, 0), window_color)
+        window.bilt(point_txt, (0, 0))
+        window.bilt(time_txt, (window_width // 2 - 40, 0))
     
 
-    pygame.display.update()
+        pygame.display.update()
