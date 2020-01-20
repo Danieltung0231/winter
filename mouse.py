@@ -66,8 +66,8 @@ while run :
         t-=-1
         point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
         time_txt = my_font.render("Time:{}".format(time), True, (0, 0, 0), window_color)
-        window.bilt(point_txt, (0, 0))
-        window.bilt(time_txt, (window_width // 2 - 40, 0))
+        window.blit(point_txt, (0, 0))
+        window.blit(time_txt, (window_width // 2 - 40, 0))
     
 
         pygame.display.update()
