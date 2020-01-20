@@ -56,8 +56,8 @@ while run :
                 pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
         else :
             pos[2] -= 1
-    point_txt = my_font.render("Point:{}".format(point), True, )
-    window.bilt(point_txt, True, 
+    point_txt = my_font.render("Point:{}".format(point), True, (0, 0, 0), window_color)
+    window.bilt(point_txt, (0, 0))
     
 
     pygame.display.update()
