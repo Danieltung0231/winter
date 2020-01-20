@@ -60,7 +60,7 @@ while run :
                     pos[2], pos[3] = random.randint(FPS, FPS * 3), random.randint(FPS, FPS * 3)
             else :
                 pos[2] -= 1
-        if t == FPS * 1.8 :
+        if t == FPS * 2.5 :
             time -= 1
             t = 0
         t-=-1
