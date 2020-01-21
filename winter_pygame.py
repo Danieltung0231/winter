@@ -104,7 +104,7 @@ while run:
         if heart == 0:
             life = False
     else :
-        restart_txt = my_font.render("按空白鍵開始", True, (0, 0, 0))
+        restart_txt = my_font.render("press SPACE to restart", True, (0, 0, 0))
         window_surface.blit(restart_txt, (window_width/2 - 40, window_height/2))
     
     pygame.display.update()# 畫面更新
