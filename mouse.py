@@ -18,8 +18,8 @@ mouse_pos = []
 for i in range(4) :
     for j in range(2) :
         k = []
-        k.append(i * (mouse_width + 40))
-        k.append(j * (mouse_height + 40))
+        k.append(i * (mouse_width + 40) + 40)
+        k.append(j * (mouse_height + 40) + 40)
         k.append(random.randint(FPS*2.5, FPS*3*2.5))
         k.append(random.randint(FPS*2.5, FPS*3*2.5))
         mouse_pos.append(k)
@@ -50,7 +50,7 @@ while run :
             if times == 0 and event.key == pygame.K_SPACE:
                 times = 60
                 point = 0
-    if time != 0:
+    if time > 0:
         for pos in mouse_pos:
             if pos[2] == 0:
                 pygame.draw.rect(window, (0, 0, 255), [pos[0], pos[1], mouse_width, mouse_height])
