@@ -13,10 +13,12 @@ balloon_position_x = window_width/2
 balloon_position_y = window_height - balloon_height
 heart = 10
 
-window_color = (255, 255, 255)
+window_color = (150, 150, 150)
 enemy_color = (255, 0, 0)
 enemy_num = 7
 enemy_speed = 3
+
+max_time = 0
 
 # 紀錄敵人位置
 enemy_position = []
@@ -101,11 +103,18 @@ while run:
         # 渲染物件
         window_surface.blit(heart_txt, (10, 0))
         window_surface.blit(time_txt, (400, 0))
-        if heart == 0:
+        if heart == 0 :
             life = False
+            with open('time.txt', 'r') as f :
+                max_time = int(f.read())
+            if max_time < time :
+                max_time = time
+                with open("time.txt", "w") as f :
+                    f.write(str(max_time))
     else :
         restart_txt = my_font.render("press SPACE to restart", True, (0, 0, 0))
-        window_surface.blit(restart_txt, (window_width/2 - 40, window_height/2))
+        window_surface.blit(restart_txt, (window_width/2 - 60, window_height/2))
+        max_time_txt = my_font.render("The most long time is {}".format(max_time), True, (0, 0, 0))
+        window_surface.blit(max_time_txt, (window_width/2 - 60, window_height/2+30))
     
     pygame.display.update()# 畫面更新
-
